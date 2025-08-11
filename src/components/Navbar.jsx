@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Search, Bell, Menu, X, Brain } from "lucide-react";
 import { Outlet, Link, useLocation } from "react-router-dom";
+import { SignOutButton, UserButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -98,11 +99,29 @@ const Navbar = () => {
               </div>
             </div>
           </div>
+
+         
+
           <button className="inline-block w-full px-4 py-2 mb-2 text-xs font-bold leading-normal text-center text-white capitalize transition-all ease-in rounded-lg shadow-md bg-slate-600 hover:bg-slate-500 hover:shadow-xs hover:-translate-y-px">
             Study Guide
           </button>
           <button className="inline-block w-full px-4 py-2 text-xs font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-gradient-to-r from-blue-500 to-purple-500 border-0 rounded-lg shadow-md hover:from-blue-600 hover:to-purple-600 hover:shadow-xs hover:-translate-y-px">
             Upgrade to Pro
+          </button>
+        </div>
+
+        <div className="mx-4 mb-4 absolute bottom-0 w-[90%] ">
+          <div className="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
+            <div className="w-1/2 mx-auto mb-4">
+              <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto">
+                <UserButton className="h-full w-full"/>
+              </div>
+            </div>
+           
+          </div>
+          
+          <button className="inline-block w-full px-4 py-2 text-xs font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-gradient-to-r from-blue-500 to-purple-500 border-0 rounded-lg shadow-md hover:from-blue-600 hover:to-purple-600 hover:shadow-xs hover:-translate-y-px">
+            <SignOutButton/>
           </button>
         </div>
       </aside>
