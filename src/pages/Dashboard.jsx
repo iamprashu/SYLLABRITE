@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Clock,
   BookOpen,
@@ -13,8 +13,10 @@ import {
   BarChart3,
   Brain,
 } from "lucide-react";
+import { useApi } from "../hooks/useApi";
 
 const Dashboard = () => {
+  const api = useApi();
   const quickStats = [
     {
       title: "Study Hours Today",
@@ -149,6 +151,22 @@ const Dashboard = () => {
       color: "text-green-400",
     },
   ];
+
+  const syncUser = async () => {
+    await api
+      .post("/users/sync-user")
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    syncUser();
+    console.log("User Sync Activated");
+  });
 
   return (
     <div className="space-y-6">
